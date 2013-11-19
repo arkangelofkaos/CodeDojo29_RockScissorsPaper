@@ -1,4 +1,4 @@
-import codedojo.RockScissorPaperMoveOutcome;
+import rockscissorpaper.outcome.OutcomeCalculator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,9 +14,9 @@ import static org.junit.Assert.assertThat;
  * @author Edward Yue Shung Wong
  */
 @RunWith(Parameterized.class)
-public class RockScissorPaperMoveOutcomeTest {
+public class OutcomeCalculatorTest {
 
-    private RockScissorPaperMoveOutcome rockScissorPaperMoveOutcome;
+    private OutcomeCalculator outcomeCalculator;
 
     private String firstMove;
     private String secondMove;
@@ -24,10 +24,10 @@ public class RockScissorPaperMoveOutcomeTest {
 
     @Before
     public void setUp() throws Exception {
-        rockScissorPaperMoveOutcome = new RockScissorPaperMoveOutcome();
+        outcomeCalculator = new OutcomeCalculator();
     }
 
-    public RockScissorPaperMoveOutcomeTest(String firstMove, String secondMove, String outcome) {
+    public OutcomeCalculatorTest(String firstMove, String secondMove, String outcome) {
         this.firstMove = firstMove;
         this.secondMove = secondMove;
         this.outcome = outcome;
@@ -35,14 +35,21 @@ public class RockScissorPaperMoveOutcomeTest {
 
     @Test
     public void winnerOfRockVsPaperIsLoss() throws Exception {
-        assertThat(rockScissorPaperMoveOutcome.plays(firstMove, secondMove), is(outcome));
+        assertThat(outcomeCalculator.plays(firstMove, secondMove), is(outcome));
     }
 
     @Parameterized.Parameters
     public static Collection primeNumbers() {
         return Arrays.asList(new Object[][]{
-                {"rock", "paper", "loss"},
-                {"paper", "rock", "win"},
+                {"rock", "paper", "P2 WIN"},
+                {"rock", "rock", "draw"},
+                {"rock", "scissors", "P1 WIN"},
+                {"paper", "rock", "P1 WIN"},
+                {"paper", "paper", "draw"},
+                {"paper", "scissors", "P2 WIN"},
+                {"scissors", "rock", "P2 WIN"},
+                {"scissors", "paper", "P1 WIN"},
+                {"scissors", "scissors", "draw"}
         });
     }
 }
