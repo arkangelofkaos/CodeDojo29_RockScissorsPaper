@@ -13,7 +13,7 @@ Getting started:
      Window > Preferences : Java > Build path > Classpath Variable
      and add M2_REPO as <your home dir>/.m2/repository
 6. Run RefereeTest as a JUnit test
-7. Run ExtremeStartupServer as a Java main class
+7. Run codedojo.ExtremeStartupServer as a Java main class
 8. Go and see the server in action:
   http://localhost:1337/?q=what+is+the+sum+of+8+and+22
 9. Try and modify the number in the above URL and verify
